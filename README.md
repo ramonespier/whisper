@@ -90,7 +90,33 @@ Documentação oficial e técnica de _Whisper_, site e API de biblioteca desenvo
 
 ### Back-end
 
-- [ ] (Inserir tarefas específicas)
+- [x] Configurar ambiente inicial do servidor (Express).  
+- [x] Definir estrutura de pastas (routes, controllers, models, middlewares, config).  
+- [x] Configurar conexão com o banco (Sequelize + MySQL).  
+- [ ] Criar models e migrations iniciais:
+  - [x] Usuário  
+  - [ ] Livro  
+  - [ ] Empréstimo/Reserva  
+  - [ ] Mensagens/Suporte  
+- [ ] Implementar autenticação:
+  - [ ] Cadastro de usuários (senha criptografada com Bcrypt).  
+  - [ ] Login (JWT para sessão).  
+  - [ ] Middleware para autenticação/roles (admin, técnico, usuário).  
+- [ ] Criar rotas para catálogo:
+  - [ ] CRUD de livros (apenas admin).  
+  - [ ] Busca e filtros de livros (usuários).  
+- [ ] Criar rotas de circulação:
+  - [ ] Registrar empréstimos.  
+  - [ ] Devoluções.  
+  - [ ] Renovação.  
+  - [ ] Reservas.  
+- [ ] Implementar sistema de notificações (ex.: cron jobs para vencimentos).  
+- [ ] Criar rotas de suporte:
+  - [ ] Mensagens de usuários → admin.  
+  - [ ] Estrutura inicial para chatbot (mock).  
+- [ ] Criar relatórios básicos (estatísticas de uso, livros populares).  
+- [ ] Configurar testes (Jest ou Mocha/Chai).  
+<!-- - [ ] Documentar API (Swagger ou outra solução).   -->
 
 ---
 
