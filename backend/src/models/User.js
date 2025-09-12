@@ -1,7 +1,17 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../database/sequelize.js";
+import bcrypt from "bcrypt-nodejs"
 
-class User extends Model { }
+
+class User extends Model {
+    validPassword(password) {
+        return bcrypt.compareSync(password, this.password)
+    };
+
+    static generateHash(password) {
+        return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
+    }
+}
 
 User.init({
 
@@ -26,8 +36,14 @@ User.init({
         }
     },
 
-    function: {
+    password: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+    },
+
+    func: {
         type: DataTypes.ENUM('user', 'librarian'),
+        defaultValue: 'user',
         allowNull: false
     }
 
@@ -38,6 +54,19 @@ User.init({
     timestamps: true,
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+
+    hooks: {
+        beforeCreate: async (user) => {
+            if (user.password) {
+                user.password = User.generateHash(user.password)
+            }
+        },
+        beforeUpdate: async (user) => {
+            if (user.changed('password')) {
+                user.password = User.generateHash(user.password)
+            }
+        }
+    }
 })
 
 export default User;
