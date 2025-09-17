@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
-import bcrypt from 'bcrypt-nodejs'
+import bcrypt from 'bcryptjs'
 
 class AuthController {
-    gerarToken(payload) {
+    static gerarToken(payload) {
         if (!process.env.JWT_SECRET) {
             throw new Error('JWT_SECRET não definido no ambiente')
         }
@@ -29,7 +29,7 @@ class AuthController {
                 return res.status(401).json({ message: 'Senha incorreta' })
             }
 
-            const token = this.gerarToken(user.id);
+            const token = AuthController.gerarToken({id: user.id});
             return res.json({ message: "Login realizado com sucesso", token})
             
         } catch (error) {
