@@ -21,6 +21,7 @@ Documentação oficial e técnica de _Whisper_, site e API de biblioteca desenvo
     - [1.2 Requisitos Não Funcionais](#12-requisitos-não-funcionais)
   - [2. TO-DO](#2-to-do)
     - [Back-end](#back-end)
+    - [Front-end](#front-end)
   - [3. Tecnologias Usadas](#3-tecnologias-usadas)
     - [3.1 Back-end](#31-back-end)
     - [3.2 Front-end](#32-front-end)
@@ -99,8 +100,8 @@ Documentação oficial e técnica de _Whisper_, site e API de biblioteca desenvo
   - [ ] Empréstimo/Reserva  
   - [ ] Mensagens/Suporte  
 - [ ] Implementar autenticação:
-  - [ ] Cadastro de usuários (senha criptografada com Bcrypt).  
-  - [ ] Login (JWT para sessão).  
+  - [x] Cadastro de usuários (senha criptografada com Bcrypt).  
+  - [x] Login (JWT para sessão).  
   - [ ] Middleware para autenticação/roles (admin, técnico, usuário).  
 - [ ] Criar rotas para catálogo:
   - [ ] CRUD de livros (apenas admin).  
@@ -116,9 +117,38 @@ Documentação oficial e técnica de _Whisper_, site e API de biblioteca desenvo
   - [ ] Estrutura inicial para chatbot (mock).  
 - [ ] Criar relatórios básicos (estatísticas de uso, livros populares).  
 - [ ] Configurar testes (Jest ou Mocha/Chai).  
-<!-- - [ ] Documentar API (Swagger ou outra solução).   -->
 
----
+### Front-end
+- [ ] Configurar projeto Next.js com TailwindCSS e shadcn/ui.
+
+- [ ] Criar páginas e rotas base:
+- [ ] Página de Login (/login) e Cadastro (/register).
+  - [ ] Página de Catálogo (/).
+  - [ ] Página de Perfil do Usuário (/profile).
+  - [ ] Página de Detalhes do Livro (/books/:id).
+
+- [ ] Implementar autenticação:
+  - [ ] Integrar formulários de login e cadastro com a API de back-end.
+  - [ ] Gerenciar o estado do token JWT (contexto ou biblioteca de estado).
+  - [ ] Proteger rotas (ex: redirecionar para login se não autenticado).
+
+- [ ] Desenvolver a interface principal:
+  - [ ] Componentes de layout (Header, Footer, Barra de Navegação).
+  - [ ] Componentes de Catálogo (cartões de livro, lista de livros).
+  - [ ] Barra de pesquisa e componentes de filtro.
+
+- [ ] Criar funcionalidades de usuário:
+  - [ ] Formulário de edição de perfil.
+  - [ ] Seção para listar livros emprestados ou reservados.
+  - [ ] Botões para empréstimo, devolução e reserva.
+
+- [ ] Desenvolver funcionalidades de administração:
+  - [ ] Página de dashboard administrativa.
+  - [ ] Formulários para CRUD de livros (criar, editar, excluir).
+
+- [ ] Adicionar sistema de suporte e notificações:
+  - [ ] Componente para o chatbot ou formulário de contato.
+  - [ ] Componente para exibir notificações e alertas.
 
 ## 3. Tecnologias Usadas
 
