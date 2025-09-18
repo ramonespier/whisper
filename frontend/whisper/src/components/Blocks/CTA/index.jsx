@@ -18,7 +18,7 @@ const CTA = ({
     items = defaultItems,
 }) => {
     return (
-        <section className="py-32">
+        <section className="py-24">
             <div className="container mx-auto">
                 <div className="flex justify-center">
                     <div className="max-w-5xl">
