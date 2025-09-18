@@ -30,7 +30,17 @@ class AuthController {
             }
 
             const token = AuthController.gerarToken({id: user.id});
-            return res.json({ message: "Login realizado com sucesso", token})
+
+            // res.cookie('authToken', token, {
+            //     httpOnly: true,
+            //     secure: process.env.NODE_ENV === 'production',
+            //     sameSite: 'strict',
+            //     maxAge: 3600000
+            // })
+
+            res.json({ message: "Login realizado com sucesso", token})
+
+            return 
             
         } catch (error) {
             console.error('Erro ao fazer login: ', error)
