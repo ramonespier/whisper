@@ -1,6 +1,5 @@
 // seed de admin
 
-import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -18,12 +17,10 @@ const createAdmin = async () => {
             return;
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-
         await User.create({
             name: name,
             email: email,
-            password: hashedPassword,
+            password: password,
             func: role
         });
 
