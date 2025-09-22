@@ -119,18 +119,18 @@ Documentação oficial e técnica de _Whisper_, site e API de biblioteca desenvo
 - [ ] Configurar testes (Jest ou Mocha/Chai).  
 
 ### Front-end
-- [ ] Configurar projeto Next.js com TailwindCSS e shadcn/ui.
+- [x] Configurar projeto Next.js com TailwindCSS e shadcn/ui.
 
 - [ ] Criar páginas e rotas base:
-- [ ] Página de Login (/login) e Cadastro (/register).
-  - [ ] Página de Catálogo (/).
+- [x] Página de Login (/login) e Cadastro (/register).
+  - [ ] Página de Catálogo (/catalog).
   - [ ] Página de Perfil do Usuário (/profile).
   - [ ] Página de Detalhes do Livro (/books/:id).
 
 - [ ] Implementar autenticação:
-  - [ ] Integrar formulários de login e cadastro com a API de back-end.
-  - [ ] Gerenciar o estado do token JWT (contexto ou biblioteca de estado).
-  - [ ] Proteger rotas (ex: redirecionar para login se não autenticado).
+  - [x] Integrar formulários de login e cadastro com a API de back-end.
+  - [x] Gerenciar o estado do token JWT (contexto ou biblioteca de estado).
+  - [x] Proteger rotas (ex: redirecionar para login se não autenticado).
 
 - [ ] Desenvolver a interface principal:
   - [ ] Componentes de layout (Header, Footer, Barra de Navegação).
