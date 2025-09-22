@@ -29,22 +29,15 @@ class AuthController {
                 return res.status(401).json({ message: 'Senha incorreta' })
             }
 
-            const token = AuthController.gerarToken({id: user.id});
+            const token = AuthController.gerarToken({ id: user.id });
 
-            // res.cookie('authToken', token, {
-            //     httpOnly: true,
-            //     secure: process.env.NODE_ENV === 'production',
-            //     sameSite: 'strict',
-            //     maxAge: 3600000
-            // })
+            res.json({ message: "Login realizado com sucesso", token })
 
-            res.json({ message: "Login realizado com sucesso", token})
+            return
 
-            return 
-            
         } catch (error) {
             console.error('Erro ao fazer login: ', error)
-            res.status(500).json({err: 'Erro ao fazer login'})
+            res.status(500).json({ err: 'Erro ao fazer login' })
         }
     }
 }

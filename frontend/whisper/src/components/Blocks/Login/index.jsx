@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { handleLogin } from "@/api/api";
-import { cookies } from "next/headers";
 
 const FormLogin = ({
   heading = "Login",

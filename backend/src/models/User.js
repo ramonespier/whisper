@@ -42,7 +42,7 @@ User.init({
     },
 
     func: {
-        type: DataTypes.ENUM('user', 'librarian'),
+        type: DataTypes.ENUM('user', 'admin'),
         defaultValue: 'user',
         allowNull: false
     }
