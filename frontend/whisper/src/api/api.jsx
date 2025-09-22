@@ -34,7 +34,13 @@ export const handleLogin = async (formData) => {
 
     console.log('Login bem sucedido e token armazenado em cookie.');
 
-    redirect('/user')
+    switch(data.func) {
+      case 'admin':
+        redirect('/admin')
+
+      case 'user':
+        redirect('/user')
+    }
 
   } else {
     console.error("Falha no login:", data.message)
