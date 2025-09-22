@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
-export function middleware() {
+export function middleware(request) {
     const { pathname } = request.nextUrl;
-    const { token } = request.cookies.get('Token');
+    const token = request.cookies.get('Token');
 
     const protectedRoutes = ['/admin', '/user'];
 
@@ -14,3 +14,7 @@ export function middleware() {
 
     return NextResponse.next()
 }
+
+export const config = {
+    matcher: ['/admin', '/user'],
+  };
