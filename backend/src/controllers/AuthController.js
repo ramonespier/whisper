@@ -29,9 +29,9 @@ class AuthController {
                 return res.status(401).json({ message: 'Senha incorreta' })
             }
 
-            const token = AuthController.gerarToken({ id: user.id });
+            const token = AuthController.gerarToken({ id: user.id, func: user.func });
 
-            res.json({ message: "Login realizado com sucesso", token })
+            res.json({ message: "Login realizado com sucesso", token, func: user.func })
 
             return
 
