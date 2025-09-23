@@ -1,11 +1,9 @@
-'use client'
-import { useEffect, useState } from 'react';
-import Cookies from "js-cookie";
+import Catalog from '@/components/Catalog/Catalog';
 
 export default function user() {
     return (
         <>
-            oiii
+            <Catalog/>
         </>
     )
 }
