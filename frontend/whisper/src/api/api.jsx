@@ -34,7 +34,7 @@ export const handleLogin = async (formData) => {
 
     console.log('Login bem sucedido e token armazenado em cookie.');
 
-    switch(data.func) {
+    switch (data.func) {
       case 'admin':
         redirect('/admin')
 
@@ -48,4 +48,39 @@ export const handleLogin = async (formData) => {
 
   console.log("Resposta do servidor:", data)
 }
+
+export const handleRegister = async (formData) => {
+  'use server'
+
+  const name = formData.get("name")
+  const email = formData.get("email")
+  const password = formData.get("password")
+  const confirm = formData.get("confirm")
+
+  if (password !== confirm) {
+    console.log('Senhas não coincidem');
+    return;
+  }
+
+  if (password === confirm) {
+    console.log("Senha recebida no servidor: ", password)
+
+    const response = await fetch(`${API_BASE_URL}/users`, {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  
+    const data = await response.json()
+    console.log('Usuário criado:', data.name)
+    redirect('/login')
+  }
+
+
+}
+
+
+
 

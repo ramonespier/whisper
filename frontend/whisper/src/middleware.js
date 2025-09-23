@@ -1,22 +1,23 @@
 import { NextResponse } from "next/server";
-import jwt from 'jsonwebtoken';
+import * as jose from 'jose';
 
-export function middleware(request) {
+export async function middleware(request) {
     const { pathname } = request.nextUrl;
     const token = request.cookies.get('Token');
 
-    const protectedRoutes = ['/admin', '/user'];
-
-    if (!protectedRoutes.includes(pathname)) {
+    if (!token) {
+        if (pathname.startsWith('/admin') || pathname.startsWith('/user')) {
+            return NextResponse.redirect(new URL('/login', request.url));
+        }
         return NextResponse.next();
     }
 
-    if (!token) {
-        return NextResponse.redirect(new URL('/login', request.url));
-    }
-
     try {
-        const user = jwt.verify(token.value, process.env.JWT_SECRET);
+
+        const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+        await jose.jwtVerify(token.value, secret);
+
+        const user = jose.decodeJwt(token.value);
 
         if (pathname.startsWith('/admin') && user.func !== 'admin') {
             return NextResponse.redirect(new URL('/user', request.url));
@@ -25,11 +26,12 @@ export function middleware(request) {
         if (pathname.startsWith('/user') && user.func !== 'user') {
             return NextResponse.redirect(new URL('/admin', request.url));
         }
-
+        
         return NextResponse.next();
 
     } catch (err) {
-        console.error("Erro no JWT:", err.name, err.message);
+
+        console.error("Erro na verificação do JWT:", err);
         return NextResponse.redirect(new URL('/login', request.url));
     }
 }

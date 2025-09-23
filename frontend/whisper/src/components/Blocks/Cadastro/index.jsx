@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { handleRegister } from "@/api/api";
 
 const FormCadastro = ({
   heading = "Cadastro",
@@ -27,12 +28,25 @@ const FormCadastro = ({
               className="h-10 dark:invert"
             />
           </a>
-          <div className="min-w-sm border-muted bg-background flex w-full max-w-sm flex-col items-center gap-y-4 rounded-md border px-6 py-8 shadow-md">
+
+          <form action={handleRegister}>
+            <div className="min-w-sm border-muted bg-background flex w-full max-w-sm flex-col items-center gap-y-4 rounded-md border px-6 py-8 shadow-md">
             {heading && <h1 className="text-xl font-semibold">{heading}</h1>}
+            <div className="flex w-full flex-col gap-2">
+              <Label>Nome</Label>
+              <Input
+                type="text"
+                name="name"
+                placeholder="Whisper"
+                className="text-sm"
+                required
+              />
+            </div>
             <div className="flex w-full flex-col gap-2">
               <Label>Email</Label>
               <Input
                 type="email"
+                name="email"
                 placeholder="whisper@email.com"
                 className="text-sm"
                 required
@@ -42,6 +56,7 @@ const FormCadastro = ({
               <Label>Senha</Label>
               <Input
                 type="password"
+                name="password"
                 placeholder="*******"
                 className="text-sm"
                 required
@@ -51,6 +66,7 @@ const FormCadastro = ({
               <Label>Confirme sua senha</Label>
               <Input
                 type="password"
+                name="confirm"
                 placeholder="*******"
                 className="text-sm"
                 required
@@ -60,6 +76,8 @@ const FormCadastro = ({
               {buttonText}
             </Button>
           </div>
+          </form>
+          
           <div className="text-muted-foreground flex justify-center gap-1 text-sm">
             <p>{signupText}</p>
             <a
