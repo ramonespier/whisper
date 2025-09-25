@@ -5,31 +5,26 @@ import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   return (
     <section>
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto pt-32 pb-8">
         <div className="bg-muted grid items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col items-center p-16 text-center lg:items-start lg:text-left">
-            <p>New Release</p>
+            <p>Descubra agora</p>
             <h1 className="my-6 text-pretty text-4xl font-bold lg:text-6xl">
-              Welcome to Our Website
+              Whisper: sua biblioteca online
             </h1>
             <p className="text-muted-foreground mb-8 max-w-xl lg:text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig
-              doloremque mollitia fugiat omnis! Porro facilis quo animi
-              consequatur. Explicabo.
+              Encontre qualquer livro que desejar em um só lugar. Com o Whisper, você tem acesso instantâneo a uma vasta coleção de títulos para explorar, aprender e se inspirar.
             </p>
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
               <Button>
-                Primary
+                Explorar agora
                 <ArrowRight className="size-4" />
               </Button>
-              <Button variant="outline">Secondary</Button>
+              <Button variant="outline">Saiba mais</Button>
             </div>
           </div>
-          <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-            alt="placeholder hero"
-            className="h-full w-full object-cover"
-          />
+          <img alt="logotipo-whisper" src={'/whisper-logos/whisper.svg'} className={'dark:hidden block h-full w-full object-cover'} />
+          <img alt="logotipo-whisper" src={'/whisper-logos/whisper-claro.svg'} className={'dark:block hidden h-full w-full object-cover'} />
         </div>
       </div>
     </section>

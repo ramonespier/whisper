@@ -1,7 +1,8 @@
-import Header from "@/components/Blocks/Header";
-import { CTA } from "@/components/Blocks/CTA";
-import { HeroSection } from "@/components/Blocks/Hero";
-import { Footer } from "@/components/Blocks/Footer";
+import Header from "@/components/Blocks/Home/Header";
+import { CTA } from "@/components/Blocks/Home/CTA";
+import { HeroSection } from "@/components/Blocks/Home/Hero";
+import Footer from "@/components/Blocks/Home/Footer";
+
 
 
 export default function Home() {

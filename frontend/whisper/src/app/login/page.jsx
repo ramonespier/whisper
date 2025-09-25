@@ -1,4 +1,4 @@
-import { FormLogin } from "@/components/Blocks/Login";
+import { FormLogin } from "@/components/Blocks/Home/Login";
 
 
 export default function Login() {

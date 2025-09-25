@@ -10,20 +10,21 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { ModeToggle } from "@/Themes/BotaoTema";
+import { SwitchTheme } from "@/components/SwitchTheme";
+import Logo from "./logo";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "#", label: "Home", active: true },
-  { href: "#", label: "Features" },
-  { href: "#", label: "Pricing" },
-  { href: "#", label: "About" },
+  { href: "#", label: "Novidades" },
+  { href: "#", label: "Planos" },
+  // { href: "#", label: "About" },
 ]
 
 export default function Header() {
   return (
-    <header className="border-b px-4 md:px-6">
-      <div className="flex h-16 items-center justify-between gap-4">
+    <header className="border-b fixed w-full backdrop-blur-2xl px-4 md:px-6">
+      <div className="flex h-25 items-center justify-between gap-4">
         {/* Left side */}
         <div className="flex items-center gap-2">
           {/* Mobile menu trigger */}
@@ -70,7 +71,7 @@ export default function Header() {
           {/* Main nav */}
           <div className="flex items-center gap-6">
             <a href="#" className="text-primary hover:text-primary/90">
-              {/* <Logo /> */}  
+              <Logo />
             </a>
             {/* Navigation menu */}
             <NavigationMenu className="max-md:hidden">
@@ -91,12 +92,12 @@ export default function Header() {
         </div>
         {/* Right side */}
         <div className="flex items-center gap-2">
-          <ModeToggle />
+          <SwitchTheme />
           <Button asChild variant="ghost" size="sm" className="text-sm">
-            <a href="#">Login</a>
+            <a href="/login">Login</a>
           </Button>
           <Button asChild size="sm" className="text-sm">
-            <a href="#">Cadastrar</a>
+            <a href="/cadastro">Cadastrar</a>
           </Button>
         </div>
       </div>

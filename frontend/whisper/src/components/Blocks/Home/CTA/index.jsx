@@ -1,20 +1,19 @@
 import { ArrowRight, Check } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 
 const defaultItems = [
-    "Easy Integration",
-    "24/7 Support",
-    "Customizable Design",
-    "Scalable Performance",
-    "Hundreds of Blocks",
+    "Todos os títulos que você procura",
+    "Pronta entrega ou retirada",
+    "Biblioteca online fácil de usar",
+    "Atualizações frequentes",
+    "Atendimento dedicado",
 ];
 
 const CTA = ({
-    title = "Call to Action",
-    description = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto illo praesentium nisi, accusantium quae.",
-    buttonText = "Get Started",
-    buttonUrl = "https://shadcnblocks.com",
+    title = "Descubra o Whisper",
+    description,
+    buttonText = "Acesse agora",
+    buttonUrl = "https://whisper.com.br",
     items = defaultItems,
 }) => {
     return (
@@ -25,9 +24,11 @@ const CTA = ({
                         <div className="flex flex-col items-start justify-between gap-8 rounded-lg bg-muted px-6 py-10 md:flex-row lg:px-20 lg:py-16">
                             <div className="md:w-1/2">
                                 <h4 className="mb-1 text-2xl font-bold md:text-3xl">{title}</h4>
-                                <p className="text-muted-foreground">{description}</p>
+                                <p className="text-muted-foreground font-semibold">
+                                    Acesse agora o Whisper, a biblioteca online com todos os títulos que você deseja, prontos para entrega ou retirada. Seu próximo livro está a um clique!
+                                </p>
                                 <Button className="mt-6" asChild>
-                                    <a href={buttonUrl} target="_blank">
+                                    <a href={buttonUrl} target="_blank" rel="noopener noreferrer">
                                         {buttonText} <ArrowRight className="size-4" />
                                     </a>
                                 </Button>
