@@ -6,7 +6,7 @@ import { Sun, Moon } from "lucide-react";
 
 import { useEffect, useState } from "react";
 
-export function SwitchTheme() {
+export function AdmTheme() {
     const {theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
@@ -19,7 +19,7 @@ export function SwitchTheme() {
     };
 
     return (
-        <Button variant="ghost" className size="icon" onClick={toggleTheme}>
+        <Button variant="ghost" className={'w-full'} size="icon" onClick={toggleTheme}>
             {mounted && theme === "dark" ? (
                 <Sun className="h-[1.2rem] w-[1.2rem]" />
             ) : mounted ? (
