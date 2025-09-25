@@ -33,10 +33,11 @@ Book.init({
         type: DataTypes.STRING(255),
         allowNull: false
     },
+    publishedYear: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
 
-    storage: {
-        type: DataTypes.INTEGER
-    }
 }, {
     sequelize,
     modelName: 'Book',
