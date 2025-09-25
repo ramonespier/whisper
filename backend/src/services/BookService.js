@@ -19,6 +19,10 @@ export async function getBooksWithStorageCount() {
                 id: book.id,
                 title: book.title,
                 author: book.author,
+                description: book.description,
+                image: book.image,
+                genre: book.genre,
+                publishedYear: book.publishedYear,
                 storage: storage
             }
         })
