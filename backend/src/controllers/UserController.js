@@ -18,7 +18,12 @@ class UserController {
             const { id } = req.params;
 
             const user = await User.findByPk(id)
+            if (!user) {
+                res.status(404).json({ message: "Usuário não encontrado." });
+                return;
+            }
             res.status(200).json(user)
+
         } catch (err) {
             res.status(500).json({ message: 'Erro ao listar usuários' })
         }
