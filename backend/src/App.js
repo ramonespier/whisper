@@ -1,10 +1,10 @@
 import 'dotenv/config'
 import express from 'express'
-// import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
 // routes
 import userRoute from './routes/userRoute.js'
+import adminRoute from './routes/adminRoute.js'
 
 const app = express()
 app.use(express.json())
@@ -22,6 +22,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/', userRoute);
+app.use('/admin', adminRoute);
+
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta: ${PORT}`)

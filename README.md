@@ -102,7 +102,7 @@ Documentação oficial e técnica de _Whisper_, site e API de biblioteca desenvo
 - [ ] Implementar autenticação:
   - [x] Cadastro de usuários (senha criptografada com Bcrypt).  
   - [x] Login (JWT para sessão).  
-  - [ ] Middleware para autenticação/roles (admin, técnico, usuário).  
+  - [x] Middleware para autenticação/roles (admin, técnico, usuário).  
 - [ ] Criar rotas para catálogo:
   - [ ] CRUD de livros (apenas admin).  
   - [ ] Busca e filtros de livros (usuários).  
