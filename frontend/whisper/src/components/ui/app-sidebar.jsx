@@ -166,7 +166,7 @@ export function AppSidebar({
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
 
-        <Button asChild className="p-0">
+        <Button asChild className="p-0 rounded-full">
           <div>
             <AdmTheme/>
           </div>

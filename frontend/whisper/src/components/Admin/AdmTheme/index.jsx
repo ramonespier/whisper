@@ -19,7 +19,7 @@ export function AdmTheme() {
     };
 
     return (
-        <Button variant="ghost" className={'w-full'} size="icon" onClick={toggleTheme}>
+        <Button variant="ghost" className={'w-full h-full rounded-full'} size="icon" onClick={toggleTheme}>
             {mounted && theme === "dark" ? (
                 <Sun className="h-[1.2rem] w-[1.2rem]" />
             ) : mounted ? (

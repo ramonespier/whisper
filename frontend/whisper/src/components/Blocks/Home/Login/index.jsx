@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { handleLogin } from "@/api/api";
+import { AdmTheme } from "@/components/Admin/AdmTheme";
 
 const FormLogin = ({
   heading = "Login",
@@ -17,6 +18,13 @@ const FormLogin = ({
 }) => {
   return (
     <section className="bg-muted h-screen">
+
+      <Button asChild className="p-0 size-15 rounded-full fixed left-5 top-5 ">
+        <div>
+          <AdmTheme />
+        </div>
+      </Button>
+
       <div className="flex h-full items-center justify-center">
         <div className="flex flex-col items-center gap-6 lg:justify-start">
           {/* Logo */}
@@ -64,7 +72,7 @@ const FormLogin = ({
               href={signupUrl}
               className="text-primary font-medium hover:underline"
             >
-              Sign up
+              Cadastre-se
             </a>
           </div>
         </div>
