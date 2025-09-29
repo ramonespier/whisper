@@ -81,6 +81,12 @@ export const handleRegister = async (formData) => {
 
 }
 
+export const handleLogOut = async () => {
+
+  cookies().delete('Token')
+  redirect('/login')
+} 
+
 
 
 
