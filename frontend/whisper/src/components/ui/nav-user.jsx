@@ -29,8 +29,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import LogOut from "../LogOut"
-import LogOutButton from "../LogOut"
+import { handleLogOut } from "@/api/api"
 
 export function NavUser({
   user
@@ -96,9 +95,16 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <LogOutButton />
+
+            <form action={handleLogOut}>
+              <DropdownMenuItem asChild>
+                <button type="submit">
+                  <LogOut />
+                  Log Out
+                </button>
               </DropdownMenuItem>
+            </form>
+            
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
