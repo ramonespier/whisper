@@ -12,12 +12,12 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
+  LibraryBig
 } from "lucide-react"
 
 import { NavMain } from "@/components/ui/nav-main"
-import { NavProjects } from "@/components/ui/nav-projects"
 import { NavUser } from "@/components/ui/nav-user"
-import { TeamSwitcher } from "@/components/ui/team-switcher"
+
 import {
   Sidebar,
   SidebarContent,
@@ -31,129 +31,58 @@ import { AdmTheme } from "../Admin/AdmTheme"
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "whisper",
+    email: "whisper@gmail.com",
+    avatar: "/whisper-logos/whisper-claro.svg",
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
+  
   navMain: [
     {
-      title: "Playground",
+      title: "Catálogo",
       url: "#",
-      icon: SquareTerminal,
+      icon: LibraryBig,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Adicionar livro",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Remover livro",
           url: "#",
         },
         {
-          title: "Settings",
+          title: "Editar livro",
+          url: "#",
+        },
+        {
+          title: "Estoque",
+          url: "#",
+        },
+        {
+          title: "Mostrar catálogo",
           url: "#",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Usuários",
       url: "#",
       icon: Bot,
       items: [
         {
-          title: "Genesis",
+          title: "Empréstimos",
           url: "#",
         },
         {
-          title: "Explorer",
+          title: "Cobranças",
           url: "#",
         },
         {
-          title: "Quantum",
+          title: "Reservas",
           url: "#",
         },
       ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
     },
   ],
 }
@@ -164,21 +93,17 @@ export function AppSidebar({
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
-
-        <Button asChild className="p-0 rounded-full">
-          <div>
-            <AdmTheme/>
-          </div>
-        </Button>
-
+        <NavUser user={data.user} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavMain items={data.navMain}/>
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <Button asChild className="p-0 rounded-full">
+          <div>
+            <AdmTheme />
+          </div>
+        </Button>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
