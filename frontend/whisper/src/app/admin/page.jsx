@@ -1,3 +1,6 @@
+import { Cobrancas } from "@/components/Admin/Cobrancas";
+import { CreateBookModal } from "@/components/Admin/CreateBook";
+import { Reservas } from "@/components/Admin/Reservas";
 import { TableUsers } from "@/components/Admin/TabelaUsers";
 import { AppSidebar } from "@/components/ui/app-sidebar"
 import {
@@ -42,13 +45,19 @@ export default function Page() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl">Empréstimos</div>
-            <div className="bg-muted/50 aspect-video rounded-xl">Cobranças</div>
-            <div className="bg-muted/50 aspect-video rounded-xl">Reservas</div>
+            <div className="bg-muted/50 aspect-video rounded-xl">
+              <CreateBookModal />
+            </div>
+            <div className="bg-muted/50 aspect-video rounded-xl">
+              <Cobrancas />
+            </div>
+            <div className="bg-muted/50 aspect-video rounded-xl">
+              <Reservas/>
+            </div>
           </div>
           <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min">
-            
-            <TableUsers/>
+
+            <TableUsers />
 
           </div>
         </div>
