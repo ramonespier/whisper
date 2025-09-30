@@ -34,7 +34,7 @@ class BookController {
             const { title, author, description, image, genre, publishedYear } = req.body
             const book = await Book.create({ title, author, description, image, genre, publishedYear })
 
-            if (!title || !author || !description || !image || !genre || publishedYear) {
+            if (!title || !author || !description || !image || !genre || !publishedYear) {
                 res.status(400).json({ message: "Campos obrigatórios não preenchidos." })
                 return;
             }

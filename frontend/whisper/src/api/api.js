@@ -70,7 +70,7 @@ export const handleRegister = async (formData) => {
         'Content-Type': 'application/json'
       }
     })
-  
+
     const data = await response.json()
     console.log('Usuário criado:', data.name)
     redirect('/login')
@@ -81,7 +81,39 @@ export const handleLogOut = async () => {
   const cookieStore = cookies();
   cookieStore.delete('Token')
   redirect('/login')
-} 
+}
+
+export const handleCreate = async (formData) => {
+  const title = formData.get("title");
+  const author = formData.get("author");
+  const description = formData.get("description");
+  const image = formData.get("image");
+  const genre = formData.get("genre");
+  const publishedYear = formData.get("publishedYear");
+
+  const response = await fetch(`${API_BASE_URL}/admin/books`, {
+    method: 'POST',
+    body: JSON.stringify({ title, author, description, image, genre, publishedYear }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+
+  const data = await response.json()
+
+  if(response.ok) {
+    return {
+      status: "success",
+      success: data.message || "Livro criado com sucesso"
+    }
+
+  } else {
+    return {
+      status: "error",
+      error: data.error || "Erro interno no servidor"
+    }
+  }
+}
 
 
 
