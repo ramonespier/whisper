@@ -4,7 +4,6 @@ import { Label } from "@/components/ui/label";
 import { handleRegister } from "@/api/api";
 import { AdmTheme } from "@/components/Admin/AdmTheme";
 
-
 const FormCadastro = ({
   heading = "Cadastro",
   logo = {

@@ -1,6 +1,7 @@
 "use client"
 
 import { handleCreate } from "@/api/api"
+import { useActionState, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -26,13 +27,39 @@ import { DatePicker } from "@/components/DatePicker"
 import { toast } from "sonner"
 
 export function CreateBookModal() {
+    const initialState = {
+        status: null,
+        success: null,
+        error: null
+    }
+
+    const [state, formAction] = useActionState(handleCreate, initialState)
+    const [open, setOpen] = useState(false)
+    const [genre, setGenre] = useState('')
+    const [date, setDate] = useState('')
+
+    useEffect(() => {
+        if (state.status === 'success') {
+            toast.success(state.success)
+
+        } else if (state.status === 'error') {
+            toast.error(state.error)
+        }
+    }, [state])
+
+    const handleDateChange = (date) => {
+        if (date && date.toISOString) {
+            setDate(date.toISOString().split('T')[0]);
+        }
+    }
+
     return (
-        <Dialog>
-            <form action={handleCreate}>
-                <DialogTrigger className='aspect-video' asChild>
-                    <Button variant="create" className={'size-full text-2xl font-bold border-3'}>Adicionar livro</Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+        <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger className='aspect-video' asChild>
+                <Button variant="create" className={'size-full text-2xl font-bold border-3'} onClick={() => setOpen(true)}>Adicionar livro</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+                <form action={formAction}>
                     <DialogHeader>
                         <DialogTitle>Adicionar um título</DialogTitle>
                         <DialogDescription>
@@ -56,9 +83,10 @@ export function CreateBookModal() {
                             <Label htmlFor="image">Capa</Label>
                             <Input type={'file'} id="image" name="image" />
                         </div>
+
                         <div className="grid gap-3">
                             <Label htmlFor="genre">Gênero</Label>
-                            <Select name="genre" id="genre">
+                            <Select onValueChange={setGenre} value={genre} >
                                 <SelectTrigger className={'w-full'}>
                                     <SelectValue placeholder="Theme" />
                                 </SelectTrigger>
@@ -83,23 +111,25 @@ export function CreateBookModal() {
                                     <SelectItem value="religioso">Religioso</SelectItem>
                                     <SelectItem value="tecnico">Técnico</SelectItem>
                                 </SelectContent>
-
                             </Select>
+                            <input type="hidden" name="genre" id="genre" value={genre} />
                         </div>
+
                         <div className="grid gap-3">
                             <Label htmlFor="publishedYear">Data de lançamento</Label>
-                            <DatePicker />
+                            <DatePicker onSelect={handleDateChange} />
+                            <input type="hidden" name="publishedYear" value={date} />
                         </div>
                     </div>
 
                     <DialogFooter>
                         <DialogClose asChild>
-                            <Button variant="outline">Cancel</Button>
+                            <Button variant="outline" onClick={() => setOpen(false)} >Cancel</Button>
                         </DialogClose>
-                        <Button type="submit" onClick={() => toast.success('jjj')} >Criar</Button>
+                        <Button type="submit">Criar</Button>
                     </DialogFooter>
-                </DialogContent>
-            </form>
+                </form>
+            </DialogContent>
         </Dialog>
     )
 }
