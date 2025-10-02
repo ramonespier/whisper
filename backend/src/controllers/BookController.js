@@ -58,8 +58,9 @@ class BookController {
             const missingFields = requiredFields.find(field => !field.value)
 
             if (missingFields) {
-                res.status(400).json({ error: `O campo ${missingFields.name} é obrigatório.` })
-                return;
+                deleteUploadedFile()
+                return res.status(400).json({ error: `O campo ${missingFields.name} é obrigatório.` })
+
             }
 
             if (!imageFile.mimetype.startsWith('image/')) {

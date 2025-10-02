@@ -40,10 +40,15 @@ export function CreateBookModal() {
 
     useEffect(() => {
         if (state.status === 'success') {
-            toast.success(state.success)
+            toast.success('Livro criado!', {
+                description: state.success,
+            })
 
         } else if (state.status === 'error') {
-            toast.error(state.error)
+            toast.error('Erro ao criar livro.', {
+                description: state.error,
+                
+            })
         }
     }, [state])
 
@@ -122,10 +127,10 @@ export function CreateBookModal() {
                         <div className="grid gap-3">
                             <Label htmlFor="publishedYear">Data de lançamento</Label>
                             <DatePicker onDateChange={handleDateChange} />
-                            <input 
-                            type="hidden" 
-                            name="publishedYear" 
-                            value={date} />
+                            <input
+                                type="hidden"
+                                name="publishedYear"
+                                value={date} />
                         </div>
                     </div>
 
