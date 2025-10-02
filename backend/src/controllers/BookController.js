@@ -1,5 +1,6 @@
 import Book from "../models/Book.js";
 import { getBooksWithStorageCount } from "../services/BookService.js";
+import fs from 'fs/promises'
 
 class BookController {
     static async getBooks(req, res) {
@@ -16,8 +17,8 @@ class BookController {
             const { id } = req.params;
 
             const book = await Book.findByPk(id)
-            if(!book) {
-                res.status(404).json({message: "Livro não encontrado."});
+            if (!book) {
+                res.status(404).json({ message: "Livro não encontrado." });
                 return;
             }
 
@@ -30,15 +31,54 @@ class BookController {
     }
 
     static async createBook(req, res) {
-        try {
-            const { title, author, description, image, genre, publishedYear } = req.body
-            const book = await Book.create({ title, author, description, image, genre, publishedYear })
+        const imageFile = req.file;
+        const { title, author, description, genre, publishedYear } = req.body
 
-            if (!title || !author || !description || !image || !genre || !publishedYear) {
-                res.status(400).json({ message: "Campos obrigatórios não preenchidos." })
+        const deleteUploadedFile = async () => {
+            if (imageFile) {
+                try {
+                    await fs.unlink(imageFile.path);
+                } catch (unlinkError) {
+                    console.error("Erro ao deletar o arquivo temporário:", imageFile.path, unlinkError);
+                }
+            }
+        };
+
+        try {
+
+            const requiredFields = [
+                { name: 'Título', value: title },
+                { name: 'Autor', value: author },
+                { name: 'Descrição', value: description },
+                { name: 'Gênero', value: genre },
+                { name: 'Data de lançamento', value: publishedYear },
+                { name: 'Capa do livro', value: imageFile }
+            ]
+
+            const missingFields = requiredFields.find(field => !field.value)
+
+            if (missingFields) {
+                res.status(400).json({ error: `O campo ${missingFields.name} é obrigatório.` })
                 return;
             }
-            res.status(201).json(book)
+
+            if (!imageFile.mimetype.startsWith('image/')) {
+                await deleteUploadedFile()
+                return res.status(400).json({ error: "Tipo de arquivo não suportado! Apenas imagens são permitidas (.jpg, .png, etc.)." });
+            }
+
+            const imagePath = imageFile.path
+
+            const book = await Book.create({
+                title,
+                author,
+                description,
+                image: imagePath,
+                genre,
+                publishedYear
+            })
+
+            res.status(201).json({ message: `Novo livro adicionado! ${book.title}` })
 
         } catch (err) {
             res.status(500).json({ error: "Ocorreu um erro interno no servidor." })

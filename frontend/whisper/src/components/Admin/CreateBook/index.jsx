@@ -47,11 +47,15 @@ export function CreateBookModal() {
         }
     }, [state])
 
+
     const handleDateChange = (date) => {
-        if (date && date.toISOString) {
-            setDate(date.toISOString().split('T')[0]);
+        if (date instanceof Date && !isNaN(date)) {
+            setDate(date.toISOString())
+        } else {
+            setDate('')
         }
     }
+
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
@@ -117,8 +121,11 @@ export function CreateBookModal() {
 
                         <div className="grid gap-3">
                             <Label htmlFor="publishedYear">Data de lançamento</Label>
-                            <DatePicker onSelect={handleDateChange} />
-                            <input type="hidden" name="publishedYear" value={date} />
+                            <DatePicker onDateChange={handleDateChange} />
+                            <input 
+                            type="hidden" 
+                            name="publishedYear" 
+                            value={date} />
                         </div>
                     </div>
 

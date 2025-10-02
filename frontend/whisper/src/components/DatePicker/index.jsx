@@ -13,7 +13,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function DatePicker() {
+export function DatePicker({onDateChange}) {
   const [open, setOpen] = useState(false)
   const [date, setDate] = useState(undefined)
 
@@ -38,7 +38,12 @@ export function DatePicker() {
             onSelect={(date) => {
               setDate(date)
               setOpen(false)
+
+              if (onDateChange) {
+                onDateChange(date)
+              }
             }}
+
           />
         </PopoverContent>
       </Popover>

@@ -84,27 +84,10 @@ export const handleLogOut = async () => {
 }
 
 export const handleCreate = async (prevState, formData) => {
-  const title = formData.get("title");
-  const author = formData.get("author");
-  const description = formData.get("description");
-  const image = formData.get("image");
-  const genre = formData.get("genre");
-  const publishedYear = formData.get("publishedYear");
-
-  if (!title || !author || !description || !image || !genre || !publishedYear) {
-    return {
-      status: 'error',
-      error: "Campos obrigatórios não definidos",
-    };
-  }
-
   try {
     const response = await fetch(`${API_BASE_URL}/admin/books`, {
       method: 'POST',
-      body: JSON.stringify({ title, author, description, image, genre, publishedYear }),
-      headers: {
-        "Content-Type": "application/json",
-      }
+      body: formData
     })
 
     const data = await response.json()
@@ -117,9 +100,11 @@ export const handleCreate = async (prevState, formData) => {
       }
 
     } else {
+      const errorMessage = data.message || data.error || 'Erro desconhecido do servidor.';
+
       return {
         status: 'error',
-        error: data.error
+        error: errorMessage
       }
     }
 
