@@ -42,11 +42,23 @@ export function CreateBookModal() {
         if (state.status === 'success') {
             toast.success('Livro criado!', {
                 description: state.success,
+                style: {
+                    backgroundColor: '#3CAE63',
+                    color: 'white',
+                    fontSize: 14,
+                    borderColor: "green"
+                }
             })
-
+            
         } else if (state.status === 'error') {
             toast.error('Erro ao criar livro.', {
                 description: state.error,
+                style: {
+                    backgroundColor: 'darkred',
+                    color: 'white',
+                    fontSize: 14,
+                    borderColor: "red"
+                }
                 
             })
         }
@@ -69,7 +81,7 @@ export function CreateBookModal() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <form action={formAction}>
-                    <DialogHeader>
+                    <DialogHeader className={'pb-5'}>
                         <DialogTitle>Adicionar um título</DialogTitle>
                         <DialogDescription>
                             Coloque todas as informações necessárias para adicionar este título.
@@ -134,7 +146,7 @@ export function CreateBookModal() {
                         </div>
                     </div>
 
-                    <DialogFooter>
+                    <DialogFooter className={'pt-5'}>
                         <DialogClose asChild>
                             <Button variant="outline" onClick={() => setOpen(false)} >Cancel</Button>
                         </DialogClose>
