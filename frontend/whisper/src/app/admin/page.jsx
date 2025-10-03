@@ -18,7 +18,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-export default function Page() {
+export default function PageAdmin() {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -46,7 +46,7 @@ export default function Page() {
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <div className="bg-muted/50 aspect-video rounded-xl">
-              <CreateBookModal />
+              <CreateBookModal id="create"/>
             </div>
             <div className="bg-muted/50 aspect-video rounded-xl">
               <Cobrancas />

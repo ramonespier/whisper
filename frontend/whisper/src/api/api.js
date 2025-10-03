@@ -116,6 +116,32 @@ export const handleCreate = async (prevState, formData) => {
   }
 }
 
+export const getCatalog = async () => {
+  'use server'
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/books`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      cache: 'no-store'
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(data.error)
+    }
+
+    console.log(data)
+    return data.books || data
+  } catch (error) {
+    console.error("Erro ao buscar catálogo de livros: ", err)
+    return { error: error }
+  }
+}
+
 
 
 

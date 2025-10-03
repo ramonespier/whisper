@@ -44,8 +44,8 @@ const data = {
       isActive: true,
       items: [
         {
-          title: "Adicionar livro",
-          url: "#",
+          title: "Ver livros",
+          url: "admin/livros",
         },
         {
           title: "Remover livro",
