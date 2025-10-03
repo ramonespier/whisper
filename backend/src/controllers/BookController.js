@@ -32,6 +32,7 @@ class BookController {
 
     static async createBook(req, res) {
         const imageFile = req.file;
+
         const { title, author, description, genre, publishedYear } = req.body
 
         const deleteUploadedFile = async () => {
@@ -68,13 +69,14 @@ class BookController {
                 return res.status(400).json({ error: "Tipo de arquivo não suportado! Apenas imagens são permitidas (.jpg, .png, etc.)." });
             }
 
-            const imagePath = imageFile.path
+            // const imagePath = imageFile.path
+            const filename = imageFile.filename
 
             const book = await Book.create({
                 title,
                 author,
                 description,
-                image: imagePath,
+                image: filename,
                 genre,
                 publishedYear
             })
